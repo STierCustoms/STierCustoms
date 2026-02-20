@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>STier Customs (STC)</title>
+<meta name="theme-color" content="#05060a"/>
+
+<style>
+:root{
+--bg:#05060a;
+--gold:#FFD48A;
+--purple:#b06bff;
+--cyan:#5ee7ff;
+--text:rgba(255,255,255,.92);
+--muted:rgba(255,255,255,.65);
+--card:rgba(255,255,255,.06);
+--line:rgba(255,255,255,.12);
+--r:20px;
+--max:1100px;
+}
+
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
+pointer-events:none;
+opacity:.5;
+}
+
+section,header,footer{
+position:relative;
+z-index:2;
+}
+
+.container{
+max-width:var(--max);
+margin:auto;
+padding:0 18px;
+}
+
+header{
+padding:20px 0;
+border-bottom:1px solid var(--line);
+backdrop-filter:blur(10px);
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.brand img{
+width:48px;
+border-radius:14px;
+}
+
+h1{
+font-size:46px;
+margin:0;
+background:linear-gradient(135deg,var(--gold),var(--purple),var(--cyan));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero{
+padding:60px 0;
+text-align:center;
+}
+
+.btn{
+display:inline-block;
+padding:12px 18px;
+border-radius:14px;
+font-weight:800;
+text-decoration:none;
+margin-top:20px;
+}
+
+.primary{
+background:linear-gradient(135deg,var(--gold),#fff);
+color:#000;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:var(--r);
+padding:18px;
+margin-bottom:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+.grid{
+display:grid;
+gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.price{
+font-weight:900;
+color:var(--gold);
+font-size:20px;
+}
+
+.old{
+text-decoration:line-through;
+opacity:.5;
+font-size:14px;
+}
+
+.warranty{
+background:rgba(255,214,138,.12);
+border:1px solid rgba(255,214,138,.4);
+padding:8px 12px;
+border-radius:12px;
+color:var(--gold);
+font-weight:900;
+margin-top:10px;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid var(--line);
+background:#111;
+color:white;
+margin-bottom:12px;
+}
+
+button{
+padding:12px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,var(--gold),#fff);
+font-weight:900;
+cursor:pointer;
+}
+
+.notice{
+color:var(--muted);
+font-size:14px;
+margin-top:10px;
+}
+
+footer{
+padding:40px 0;
+text-align:center;
+border-top:1px solid var(--line);
+color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<header>
+<div class="container brand">
+<img src="IMG_2484.jpeg">
+<div>
+<strong>STier Customs (STC)</strong><br>
+<small>Premium Automotive Upgrades</small>
+</div>
+</div>
+</header>
+
+<section class="hero container">
+<h1>Make Your Car Next Level</h1>
+<p>Starlights • Ambient Lighting • CarPlay • Dashcams</p>
+<a href="#products" class="btn primary">View Opening Deals</a>
+</section>
+
+<section id="products" class="container">
+<h2>Opening Discounts</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="IMG_2475.jpeg" style="width:100%;border-radius:14px;">
+<h3>Starlights (600 Pieces)</h3>
+<div><span class="old">£450</span> <span class="price">£379.99</span></div>
+<div class="warranty">12 Months Warranty Included</div>
+<p>Deposit required: £80</p>
+</div>
+
+<div class="card">
+<img src="IMG_2476.jpeg" style="width:100%;border-radius:14px;">
+<h3>Ambient Lighting</h3>
+<div><span class="old">£350</span> <span class="price">£279.99</span></div>
+<div class="warranty">12 Months Warranty Included</div>
+<p>Deposit required: £80</p>
+</div>
+
+<div class="card">
+<img src="IMG_2482.jpeg" style="width:100%;border-radius:14px;">
+<h3>Screen Upgrade (CarPlay)</h3>
+<div><span class="price">From £250</span></div>
+<div class="warranty">12 Months Warranty Included</div>
+<p>Deposit required: £80</p>
+</div>
+
+<div class="card">
+<img src="IMG_2481.jpeg" style="width:100%;border-radius:14px;">
+<h3>Dashcam Install</h3>
+<div><span class="old">£125</span> <span class="price">£99.99</span></div>
+<div class="warranty">12 Months Warranty Included</div>
+<p>Deposit required: £40</p>
+</div>
+
+</div>
+</section>
+
+<section id="booking" class="container">
+<h2>Request Appointment</h2>
+<p class="notice">Bookings must be made at least 3 days in advance.</p>
+
+<form onsubmit="return validateDate()">
+<input type="text" placeholder="Full Name" required>
+<input type="tel" placeholder="WhatsApp Number" required>
+<input type="date" id="date" required>
+<select required>
+<option value="">Select Service</option>
+<option>Starlights</option>
+<option>Ambient Lighting</option>
+<option>CarPlay</option>
+<option>Dashcam</option>
+</select>
+<textarea placeholder="Notes"></textarea>
+<button type="submit">Send Request</button>
+</form>
+</section>
+
+<footer>
+STier Customs © <span id="year"></span><br>
+All services include 12 months warranty.
+</footer>
+
+<script>
+// Star background
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<120;i++){
+stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,2*Math.PI);
+ctx.fill();
+});
+requestAnimationFrame(draw);
+}
+draw();
+
+// 3 day booking rule
+function validateDate(){
+const input=document.getElementById("date").value;
+const selected=new Date(input);
+const today=new Date();
+today.setDate(today.getDate()+3);
+if(selected<today){
+alert("Bookings must be at least 3 days in advance.");
+return false;
+}
+return true;
+}
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
