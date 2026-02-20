@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STier Customs (STC) — Premium Automotive Upgrades</title>
+<meta name="description" content="Starlight headliners, ambient lighting, CarPlay screen upgrades and dashcams. 12 months warranty included. Book at least 3 days in advance." />
+<meta name="theme-color" content="#070812" />
+
+<style>
+:root{
+  --bg:#070812;
+  --bg2:#0b0c18;
+  --card:rgba(255,255,255,.06);
+  --card2:rgba(255,255,255,.085);
+  --line:rgba(255,255,255,.12);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.68);
+  --gold:#FFD48A;
+  --violet:#b06bff;
+  --cyan:#5ee7ff;
+  --radius:18px;
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+  --max: 1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--text);
+  background: radial-gradient(1200px 700px at 10% 0%, rgba(176,107,255,.22), transparent 55%),
+              radial-gradient(1200px 700px at 90% 10%, rgba(94,231,255,.12), transparent 50%),
+              linear-gradient(180deg, var(--bg), var(--bg2) 60%, #060610);
+  overflow-x:hidden;
+}
+a{color:inherit}
+.container{max-width:var(--max); margin:auto; padding:0 18px;}
+/* ====== ambient FX ====== */
+#stars, #dust{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+}
+#stars{opacity:.55}
+#dust{opacity:.20; filter: blur(.2px)}
+.glow{
+  position:fixed; inset:-200px; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(700px 350px at 20% 10%, rgba(255,212,138,.10), transparent 60%),
+    radial-gradient(700px 350px at 80% 0%, rgba(176,107,255,.14), transparent 60%),
+    radial-gradient(700px 350px at 80% 70%, rgba(94,231,255,.10), transparent 60%);
+  mix-blend-mode:screen;
+}
+/* ====== header ====== */
+.header{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(14px);
+  background: rgba(7,8,18,.55);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 0;
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand img{
+  width:44px; height:44px; object-fit:cover; border-radius:14px;
+  box-shadow: 0 10px 30px rgba(176,107,255,.22);
+  border:1px solid rgba(255,255,255,.10);
+}
+.brand b{letter-spacing:.3px}
+.brand small{display:block; color:var(--muted); margin-top:2px}
+.links{display:flex; gap:14px; align-items:center;}
+.links a{
+  text-decoration:none; color:var(--muted);
+  padding:10px 10px; border-radius:12px;
+  transition: .2s ease;
+}
+.links a:hover{color:var(--text); background:rgba(255,255,255,.05)}
+.ctaRow{display:flex; gap:10px; align-items:center}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; border-radius:14px;
+  text-decoration:none; font-weight:900;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  transition:.22s ease;
+}
+.btn:hover{transform:translateY(-1px); background: rgba(255,255,255,.085)}
+.btnPrimary{
+  border:none;
+  background: linear-gradient(135deg, var(--gold), #fff);
+  color:#0b0b10;
+  box-shadow: 0 12px 38px rgba(255,212,138,.18);
+}
+.btnPrimary:hover{filter:brightness(1.02)}
+.btnGhost{color:var(--text)}
+.burger{display:none}
+
+/* ====== hero ====== */
+.hero{
+  position:relative;
+  padding:54px 0 18px;
+  z-index:2;
+}
+.heroGrid{
+  display:grid; gap:24px;
+  grid-template-columns: 1.08fr .92fr;
+  align-items:center;
+}
+.badge{
+  display:inline-flex; gap:8px; align-items:center;
+  padding:8px 12px; border-radius:999px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  color:var(--muted);
+  width:fit-content;
+}
+.badgeDot{
+  width:8px; height:8px; border-radius:99px;
+  background: linear-gradient(135deg, var(--violet), var(--cyan));
+  box-shadow: 0 0 18px rgba(176,107,255,.55);
+}
+.hTitle{
+  margin:14px 0 10px;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height:1.05;
+  letter-spacing:-.6px;
+}
+.gradientText{
+  background: linear-gradient(135deg, var(--gold), var(--violet), var(--cyan));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hSub{
+  margin:0 0 18px;
+  color:var(--muted);
+  font-size: 16px;
+  max-width: 56ch;
+}
+.heroButtons{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.pills{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.pill{
+  font-size:13px; color:rgba(255,255,255,.80);
+  padding:8px 10px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+.heroCard{
+  border-radius: 22px;
+  border:1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.heroMedia{
+  position:relative;
+  height: 360px;
+  background:
+    radial-gradient(1200px 400px at 50% 0%, rgba(176,107,255,.25), transparent 55%),
+    linear-gradient(135deg, rgba(255,212,138,.10), rgba(94,231,255,.06));
+}
+.heroMedia img{
+  width:100%; height:100%; object-fit:cover;
+  opacity:.88;
+  transform: scale(1.02);
+}
+.heroOverlay{
+  position:absolute; inset:0;
+  background: radial-gradient(700px 350px at 30% 20%, rgba(0,0,0,.0), rgba(0,0,0,.65));
+}
+.heroStats{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:10px; padding:14px;
+}
+.stat{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.25);
+  border-radius:16px;
+  padding:12px;
+}
+.stat b{display:block; font-size:16px}
+.stat small{color:var(--muted)}
+/* ====== sections ====== */
+.section{padding:44px 0; position:relative; z-index:2}
+.section h2{
+  margin:0 0 10px;
+  font-size: 28px;
+  letter-spacing:-.2px;
+}
+.section p.lead{margin:0 0 18px; color:var(--muted); max-width: 70ch;}
+.grid{
+  display:grid; gap:16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.card{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius);
+  padding:16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+  transition: .25s ease;
+}
+.card:hover{transform: translateY(-3px); background: rgba(255,255,255,.085)}
+/* ====== feature row ====== */
+.feature{
+  grid-column: span 4;
+  display:flex; gap:12px;
+}
+.ico{
+  width:40px; height:40px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+.ico span{
+  display:inline-block; width:18px; height:18px; border-radius:6px;
+  background: linear-gradient(135deg, var(--violet), var(--cyan));
+  box-shadow: 0 0 18px rgba(94,231,255,.25);
+}
+.feature b{display:block}
+.feature small{color:var(--muted)}
+/* ====== services ====== */
+.service{
+  grid-column: span 6;
+  overflow:hidden;
+  padding:0;
+}
+.service .inner{padding:16px}
+.service img{
+  width:100%; height:220px; object-fit:cover; display:block;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.priceRow{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.old{opacity:.45; text-decoration:line-through}
+.price{color:var(--gold); font-weight:950; font-size:22px}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+.tag{
+  font-size:12px; color:rgba(255,255,255,.78);
+  padding:7px 9px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+}
+.warranty{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,212,138,.35);
+  background: rgba(255,212,138,.10);
+  color: var(--gold);
+  font-weight:900;
+}
+.serviceActions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+/* ====== gallery ====== */
+.galleryWrap{
+  grid-column: span 12;
+  display:grid; gap:14px;
+  grid-template-columns: 1.2fr .8fr;
+}
+.galleryMain{
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  overflow:hidden;
+  position:relative;
+  min-height: 360px;
+}
+.galleryMain img{width:100%; height:100%; object-fit:cover; display:block; opacity:.9}
+.galleryFade{position:absolute; inset:0; background: radial-gradient(700px 350px at 30% 10%, rgba(0,0,0,.0), rgba(0,0,0,.62))}
+.gallerySide{
+  display:grid; gap:14px;
+}
+.thumb{
+  border-radius:22px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  position:relative;
+  min-height: 172px;
+}
+.thumb img{width:100%; height:100%; object-fit:cover; display:block; opacity:.9}
+.thumb .label{
+  position:absolute; left:12px; bottom:12px;
+  padding:8px 10px;
+  border-radius:999px;
+  background: rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.85);
+  font-weight:800;
+  font-size:12px;
+}
+/* ====== how it works ====== */
+.steps .card{grid-column: span 4}
+.stepNo{
+  width:36px; height:36px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:950;
+  color:#0b0b10;
+  background: linear-gradient(135deg, var(--gold), #fff);
+}
+/* ====== booking ====== */
+.booking{
+  grid-column: span 12;
+  display:grid; gap:16px;
+  grid-template-columns: 1fr 1fr;
+  align-items:start;
+}
+.formCard{padding:18px}
+label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px}
+input, select, textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.30);
+  color: var(--text);
+  outline:none;
+}
+textarea{min-height:100px; resize:vertical}
+.help{
+  margin-top:10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height:1.45;
+}
+.notice{
+  padding:12px 12px;
+  border-radius:16px;
+  border:1px solid rgba(94,231,255,.22);
+  background: rgba(94,231,255,.06);
+  color: rgba(255,255,255,.86);
+}
+.depositBox{
+  border-radius:16px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+.depositBox b{display:block; margin-bottom:6px}
+.depositList{margin:0; padding-left:18px; color:var(--muted)}
+hr.sep{border:none; border-top:1px solid rgba(255,255,255,.10); margin:14px 0}
+.kpi{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:10px;
+}
+.kpi .mini{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  border-radius:16px;
+  padding:12px;
+}
+.kpi .mini b{display:block}
+.kpi .mini small{color:var(--muted)}
+/* ====== faq/contact/footer ====== */
+.faq .card{grid-column: span 6}
+.footer{
+  padding:36px 0;
+  border-top:1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+  z-index:2;
+  position:relative;
+}
+.footerTop{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:16px; flex-wrap:wrap;
+}
+.footer small{color:var(--muted)}
+/* ====== reveal animations ====== */
+.reveal{opacity:0; transform: translateY(14px); transition: .7s ease}
+.reveal.show{opacity:1; transform:none}
+.floaty{animation: floaty 4.5s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* ====== responsive ====== */
+@media (max-width: 940px){
+  .heroGrid{grid-template-columns: 1fr}
+  .galleryWrap{grid-template-columns:1fr}
+  .booking{grid-template-columns:1fr}
+  .feature{grid-column: span 12}
+  .service{grid-column: span 12}
+  .steps .card{grid-column: span 12}
+  .faq .card{grid-column: span 12}
+  .links{display:none}
+}
+</style>
+</head>
+
+<body>
+<div class="glow"></div>
+<canvas id="stars"></canvas>
+<canvas id="dust"></canvas>
+
+<header class="header">
+  <div class="container nav">
+    <div class="brand">
+      <img src="IMG_2484.jpeg" alt="STC Logo" />
+      <div>
+        <b>STier Customs (STC)</b>
+        <small>Premium Automotive Upgrades</small>
+      </div>
+    </div>
+
+    <nav class="links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#booking">Booking</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="ctaRow">
+      <a class="btn btnGhost" href="#booking">Book now</a>
+      <a class="btn btnPrimary" id="whatsTop" href="#">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container heroGrid">
+      <div class="reveal show">
+        <div class="badge"><span class="badgeDot"></span> Opening deals live • 12 months warranty on all services</div>
+        <h1 class="hTitle">
+          <span class="gradientText">Make Your Car Next Level</span>
+        </h1>
+        <p class="hSub">
+          Starlight headliners, ambient lighting, CarPlay upgrades and dashcam installs — clean fitment, tidy wiring and a premium finish.
+          <br><br>
+          <b>Booking rule:</b> appointments must be <b>at least 3 days in advance</b>.
+        </p>
+
+        <div class="heroButtons">
+          <a class="btn btnPrimary" href="#services">Explore services</a>
+          <a class="btn" href="#gallery">See the vibe</a>
+          <a class="btn" href="#booking">Request appointment</a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">✅ 12 months warranty</span>
+          <span class="pill">✅ Deposits after slot confirmed</span>
+          <span class="pill">✅ UK based</span>
+          <span class="pill">✅ Clean installs</span>
+        </div>
+      </div>
+
+      <div class="heroCard reveal show floaty">
+        <div class="heroMedia">
+          <img src="IMG_2475.jpeg" alt="Starlights headliner" />
+          <div class="heroOverlay"></div>
+        </div>
+        <div class="heroStats">
+          <div class="stat">
+            <b>Opening Deals</b>
+            <small>Limited time pricing</small>
+          </div>
+          <div class="stat">
+            <b>3+ Days Notice</b>
+            <small>To confirm availability</small>
+          </div>
+          <div class="stat">
+            <b>Warranty</b>
+            <small>12 months included</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / FEATURES -->
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal">Why STC?</h2>
+      <p class="lead reveal">A proper upgrade isn’t just the product — it’s the install. We focus on clean fitment, tidy routing and a premium finish so it looks factory, not rushed.</p>
+
+      <div class="grid">
+        <div class="card feature reveal">
+          <div class="ico"><span></span></div>
+          <div>
+            <b>Clean, tidy installs</b>
+            <small>No messy wiring, no cheap look — just clean work.</small>
+          </div>
+        </div>
+        <div class="card feature reveal">
+          <div class="ico"><span></span></div>
+          <div>
+            <b>Warranty included</b>
+            <small>12 months warranty on all services for peace of mind.</small>
+          </div>
+        </div>
+        <div class="card feature reveal">
+          <div class="ico"><span></span></div>
+          <div>
+            <b>Booking system that makes sense</b>
+            <small>Check availability first, then pay deposit to lock it in.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="reveal">Services</h2>
+      <p class="lead reveal">Choose your upgrade. Tap “Book this” to jump straight to booking with the service selected.</p>
+
+      <div class="grid">
+        <article class="card service reveal" data-service="Starlights">
+          <img src="IMG_2475.jpeg" alt="Starlights headliner" />
+          <div class="inner">
+            <h3>Starlights (600 pieces)</h3>
+            <div class="priceRow">
+              <span class="old">£450</span>
+              <span class="price">£379.99</span>
+            </div>
+            <div class="meta">
+              <span class="tag">Deposit: £80</span>
+              <span class="tag">12 months warranty</span>
+              <span class="tag">Opening discount</span>
+            </div>
+            <div class="warranty">12 Months Warranty Included</div>
+            <p class="help">Premium star ceiling effect with a clean finish. Perfect for night drives and that luxury vibe.</p>
+            <div class="serviceActions">
+              <a class="btn btnPrimary bookBtn" href="#booking">Book this</a>
+              <a class="btn" href="#pricing">See pricing</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card service reveal" data-service="Ambient Lighting">
+          <img src="IMG_2476.jpeg" alt="Ambient lighting interior" />
+          <div class="inner">
+            <h3>Ambient Lighting</h3>
+            <div class="priceRow">
+              <span class="old">£350</span>
+              <span class="price">£279.99</span>
+            </div>
+            <div class="meta">
+              <span class="tag">Deposit: £80</span>
+              <span class="tag">12 months warranty</span>
+              <span class="tag">Opening discount</span>
+            </div>
+            <div class="warranty">12 Months Warranty Included</div>
+            <p class="help">A proper cabin glow that transforms the interior. Clean routing, premium look.</p>
+            <div class="serviceActions">
+              <a class="btn btnPrimary bookBtn" href="#booking">Book this</a>
+              <a class="btn" href="#gallery">See gallery</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card service reveal" data-service="CarPlay">
+          <img src="IMG_2482.jpeg" alt="CarPlay screen upgrade" />
+          <div class="inner">
+            <h3>Screen Upgrade (CarPlay)</h3>
+            <div class="priceRow">
+              <span class="price">From £250</span>
+            </div>
+            <div class="meta">
+              <span class="tag">Deposit: £80</span>
+              <span class="tag">12 months warranty</span>
+              <span class="tag">Options available</span>
+            </div>
+            <div class="warranty">12 Months Warranty Included</div>
+            <p class="help">Upgrade your screen for CarPlay depending on your car + what you want installed.</p>
+            <div class="serviceActions">
+              <a class="btn btnPrimary bookBtn" href="#booking">Book this</a>
+              <a class="btn" href="#faq">Questions?</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card service reveal" data-service="Dashcam">
+          <img src="IMG_2481.jpeg" alt="Dashcam install" />
+          <div class="inner">
+            <h3>Dashcam Install</h3>
+            <div class="priceRow">
+              <span class="old">£125</span>
+              <span class="price">£99.99</span>
+            </div>
+            <div class="meta">
+              <span class="tag">Deposit: £40</span>
+              <span class="tag">12 months warranty</span>
+              <span class="tag">Opening discount</span>
+            </div>
+            <div class="warranty">12 Months Warranty Included</div>
+            <p class="help">Neat install for front / rear setups (depending on device). Secure routing, clean finish.</p>
+            <div class="serviceActions">
+              <a class="btn btnPrimary bookBtn" href="#booking">Book this</a>
+              <a class="btn" href="#pricing">See pricing</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2 class="reveal">Gallery</h2>
+      <p class="lead reveal">A quick look at the vibe — starlights, ambient glow, and clean tech upgrades.</p>
+
+      <div class="grid">
+        <div class="galleryWrap">
+          <div class="galleryMain card reveal">
+            <img id="galleryMainImg" src="IMG_2475.jpeg" alt="Gallery main" />
+            <div class="galleryFade"></div>
+          </div>
+
+          <div class="gallerySide">
+            <button class="thumb card reveal" data-img="IMG_2475.jpeg" type="button" style="padding:0; text-align:left;">
+              <img src="IMG_2475.jpeg" alt="Starlights" />
+              <span class="label">Starlights</span>
+            </button>
+            <button class="thumb card reveal" data-img="IMG_2476.jpeg" type="button" style="padding:0; text-align:left;">
+              <img src="IMG_2476.jpeg" alt="Ambient Lighting" />
+              <span class="label">Ambient</span>
+            </button>
+            <button class="thumb card reveal" data-img="IMG_2482.jpeg" type="button" style="padding:0; text-align:left;">
+              <img src="IMG_2482.jpeg" alt="CarPlay" />
+              <span class="label">CarPlay</span>
+            </button>
+            <button class="thumb card reveal" data-img="IMG_2481.jpeg" type="button" style="padding:0; text-align:left;">
+              <img src="IMG_2481.jpeg" alt="Dashcam" />
+              <span class="label">Dashcam</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p class="help reveal" style="margin-top:14px;">
+        Tip: we can add more pics later — just upload them and I’ll plug them into the gallery properly.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <h2 class="reveal">Pricing & Deposits</h2>
+      <p class="lead reveal">
+        Opening discounts are live. Deposits are paid <b>after you pick an available date</b> to lock the booking in.
+      </p>
+
+      <div class="grid">
+        <div class="card reveal" style="grid-column: span 7;">
+          <h3 style="margin-top:0;">Opening Deals</h3>
+          <div class="depositBox">
+            <b>Starlights (600 pieces)</b>
+            <div class="priceRow"><span class="old">£450</span><span class="price">£379.99</span></div>
+            <div class="help">Deposit: <b>£80</b> • 12 months warranty included</div>
+            <hr class="sep">
+            <b>Ambient Lighting</b>
+            <div class="priceRow"><span class="old">£350</span><span class="price">£279.99</span></div>
+            <div class="help">Deposit: <b>£80</b> • 12 months warranty included</div>
+            <hr class="sep">
+            <b>Screen Upgrade (CarPlay)</b>
+            <div class="priceRow"><span class="price">From £250</span></div>
+            <div class="help">Deposit: <b>£80</b> • 12 months warranty included</div>
+            <hr class="sep">
+            <b>Dashcam Install</b>
+            <div class="priceRow"><span class="old">£125</span><span class="price">£99.99</span></div>
+            <div class="help">Deposit: <b>£40</b> • 12 months warranty included</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="grid-column: span 5;">
+          <h3 style="margin-top:0;">How it works</h3>
+          <div class="notice">
+            <b>Booking must be at least 3 days in advance.</b><br>
+            You request a date → we confirm availability → you pay the deposit → your slot is locked.
+          </div>
+          <hr class="sep">
+          <div class="kpi">
+            <div class="mini">
+              <b>Deposits</b>
+              <small>£80 for Starlights / Ambient / CarPlay, £40 for Dashcam</small>
+            </div>
+            <div class="mini">
+              <b>Warranty</b>
+              <small>12 months warranty on all services</small>
+            </div>
+          </div>
+          <hr class="sep">
+          <a class="btn btnPrimary" href="#booking">Request appointment</a>
+          <a class="btn" href="#contact" style="margin-left:8px;">Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="section">
+    <div class="container">
+      <h2 class="reveal">Request Appointment</h2>
+      <p class="lead reveal">Fill this in and it will open WhatsApp with your request (so you actually receive it instantly).</p>
+
+      <div class="grid">
+        <div class="booking">
+          <div class="card formCard reveal">
+            <form id="bookingForm">
+              <label for="name">Full name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+
+              <label for="phone">WhatsApp number</label>
+              <input id="phone" name="phone" placeholder="+44..." required />
+
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="" selected disabled>Select service</option>
+                <option value="Starlights">Starlights</option>
+                <option value="Ambient Lighting">Ambient Lighting</option>
+                <option value="CarPlay">Screen Upgrade (CarPlay)</option>
+                <option value="Dashcam">Dashcam Install</option>
+              </select>
+
+              <label for="date">Preferred date</label>
+              <input id="date" name="date" type="date" required />
+
+              <label for="notes">Notes (car model / extra info)</label>
+              <textarea id="notes" name="notes" placeholder="e.g. BMW 3 Series 2016, want purple ambient, front+rear dashcam, etc."></textarea>
+
+              <div class="notice" style="margin-top:12px">
+                <b>Rule:</b> bookings must be made at least <b>3 days in advance</b>.<br>
+                <b>Deposit:</b> paid <b>after availability is confirmed</b>.
+              </div>
+
+              <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
+                <button class="btn btnPrimary" type="submit" style="padding:12px 16px; border:none;">Send request on WhatsApp</button>
+                <a class="btn" id="callBtn" href="tel:+447444136890">Call</a>
+              </div>
+
+              <p class="help">Once you send the request, we confirm your slot and then you pay the deposit to secure it.</p>
+            </form>
+          </div>
+
+          <div class="card reveal">
+            <h3 style="margin-top:0;">Deposits</h3>
+            <ul class="depositList">
+              <li><b>£80</b> — Starlights / Ambient / CarPlay</li>
+              <li><b>£40</b> — Dashcam</li>
+            </ul>
+            <div class="warranty" style="margin-top:12px;">12 Months Warranty Included (All services)</div>
+            <hr class="sep">
+            <h3>What you’ll be asked</h3>
+            <p class="help">
+              Car make/model/year, what you want installed, and your preferred date.
+              If you’re not sure, put “not sure” and we’ll guide you.
+            </p>
+            <hr class="sep">
+            <h3>Contact</h3>
+            <p class="help" style="margin-bottom:6px;"><b>Phone / WhatsApp:</b> +44 7444 136890</p>
+            <a class="btn btnPrimary" id="whatsBtn" href="#" style="border:none;">WhatsApp STC</a>
+            <a class="btn" href="#faq" style="margin-left:8px;">Read FAQ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="reveal">FAQ</h2>
+      <p class="lead reveal">Quick answers — so people trust the site and know what to expect.</p>
+
+      <div class="grid faq">
+        <div class="card reveal">
+          <h3 style="margin-top:0;">Why 3 days in advance?</h3>
+          <p class="help">So we can confirm availability, prep the install and make sure your slot is locked properly.</p>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="margin-top:0;">When do I pay deposit?</h3>
+          <p class="help">After we confirm the date/time is available. Then deposit secures the booking.</p>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="margin-top:0;">Is warranty included?</h3>
+          <p class="help"><b>Yes.</b> 12 months warranty on all services.</p>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="margin-top:0;">CarPlay “from £250” — why “from”?</h3>
+          <p class="help">Different cars/screens require different kits + options. We’ll quote after you tell us your car model + what you want.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="reveal">Contact</h2>
+      <p class="lead reveal">Fastest way is WhatsApp — bookings + questions.</p>
+
+      <div class="grid">
+        <div class="card reveal" style="grid-column: span 12;">
+          <div class="footerTop">
+            <div class="brand">
+              <img src="IMG_2484.jpeg" alt="STC Logo" />
+              <div>
+                <b>STier Customs (STC)</b>
+                <small>Premium Automotive Upgrades</small>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+              <a class="btn btnPrimary" id="whatsBottom" href="#" style="border:none;">WhatsApp</a>
+              <a class="btn" href="tel:+447444136890">Call: +44 7444 136890</a>
+              <a class="btn" href="#booking">Book</a>
+            </div>
+          </div>
+
+          <p class="help" style="margin-top:12px">
+            © <span id="year"></span> STier Customs. All services include 12 months warranty.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <small>Built for STC • Opening deals subject to change.</small>
+  </div>
+</footer>
+
+<script>
+/* ====== Canvas stars (subtle + premium) ====== */
+function setupCanvas(id, count, speedMin, speedMax, sizeMin, sizeMax, alpha){
+  const c = document.getElementById(id);
+  const ctx = c.getContext("2d");
+  function resize(){ c.width = innerWidth; c.height = innerHeight; }
+  resize(); addEventListener("resize", resize);
+
+  const pts = Array.from({length: count}, () => ({
+    x: Math.random()*c.width,
+    y: Math.random()*c.height,
+    r: sizeMin + Math.random()*(sizeMax-sizeMin),
+    v: speedMin + Math.random()*(speedMax-speedMin),
+    a: alpha * (0.6 + Math.random()*0.8)
+  }));
+
+  function tick(){
+    ctx.clearRect(0,0,c.width,c.height);
+    for(const p of pts){
+      p.y += p.v;
+      if(p.y > c.height + 10){ p.y = -10; p.x = Math.random()*c.width; }
+      ctx.globalAlpha = p.a;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+setupCanvas("stars", 120, 0.10, 0.35, 0.5, 1.6, 0.9);
+setupCanvas("dust", 70, 0.05, 0.16, 0.8, 2.3, 0.45);
+
+/* ====== reveal on scroll ====== */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* ====== gallery switch ====== */
+const mainImg = document.getElementById("galleryMainImg");
+document.querySelectorAll(".thumb").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const src = btn.getAttribute("data-img");
+    mainImg.style.opacity = "0";
+    setTimeout(()=>{
+      mainImg.src = src;
+      mainImg.onload = ()=> mainImg.style.opacity = "0.95";
+    }, 140);
+  });
+});
+
+/* ====== booking: enforce 3 days + set deposit + WhatsApp message ====== */
+const SERVICE_DEPOSIT = {
+  "Starlights": 80,
+  "Ambient Lighting": 80,
+  "CarPlay": 80,
+  "Dashcam": 40
+};
+
+function minDatePlusDays(days){
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+function toISODate(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+
+// enforce date picker min = today+3
+const dateEl = document.getElementById("date");
+dateEl.min = toISODate(minDatePlusDays(3));
+
+const serviceEl = document.getElementById("service");
+const form = document.getElementById("bookingForm");
+
+// When clicking "Book this" buttons, preselect service
+document.querySelectorAll(".service").forEach(card=>{
+  const svc = card.getAttribute("data-service");
+  card.querySelectorAll(".bookBtn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      if(svc === "CarPlay") serviceEl.value = "CarPlay";
+      else if(svc === "Dashcam") serviceEl.value = "Dashcam";
+      else serviceEl.value = svc;
+    });
+  });
+});
+
+const whatsappNumber = "447444136890"; // no +, no spaces
+function waLink(text){
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+}
+
+function buildMessage(){
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const svcVal = serviceEl.value;
+  const date = dateEl.value;
+  const notes = document.getElementById("notes").value.trim();
+  const dep = SERVICE_DEPOSIT[svcVal] ?? "TBC";
+
+  return `Hi STier Customs (STC), I want to book a service.
+
+Name: ${name}
+WhatsApp: ${phone}
+Service: ${svcVal}
+Preferred date: ${date}
+Deposit (after availability confirmed): £${dep}
+Notes: ${notes || "—"}
+
+(Booking must be at least 3 days in advance.)`;
+}
+
+form.addEventListener("submit", (e)=>{
+  e.preventDefault();
+
+  // enforce 3 days in advance (extra safety)
+  const chosen = new Date(dateEl.value + "T00:00:00");
+  const min = minDatePlusDays(3);
+  if(chosen < min){
+    alert("Bookings must be at least 3 days in advance. Please pick a later date.");
+    return;
+  }
+  if(!serviceEl.value){
+    alert("Please select a service.");
+    return;
+  }
+
+  // open WhatsApp with details
+  const msg = buildMessage();
+  window.open(waLink(msg), "_blank");
+});
+
+// Top / bottom WhatsApp buttons
+const quickMsg = "Hi STier Customs (STC) — I want to book. What dates are available? (Bookings must be at least 3 days in advance.)";
+document.getElementById("whatsBtn").href = waLink(quickMsg);
+document.getElementById("whatsTop").href = waLink(quickMsg);
+document.getElementById("whatsBottom").href = waLink(quickMsg);
+
+// year
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
